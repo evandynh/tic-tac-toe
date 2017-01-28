@@ -1,12 +1,29 @@
 .box {
-  border: 2px solid black;
+  border: 2px solid lightgray;
   height: 100px;
   width: 100px;
   display: inline-block;
+  background-color: ivory;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.box:hover {
+  border-color: lightcoral;
+}
+
+.top, .middle, .bottom {
+  text-align: center;
+}
+
+body {
+  background-color: steelblue;
 }
 
 h1, h3 {
-  text-align: center;  
+  text-align: center;
+  color: seashell;
 }
 
 h1 {
@@ -16,8 +33,8 @@ h1 {
 button {
   display: block;
   margin: 20px auto;
+  font-family: tahoma;
 }
-
-.top, .middle, .bottom {
-  text-align: center;
+button:hover {
+  color: blue;
 }
