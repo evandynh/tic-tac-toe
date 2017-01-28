@@ -1,0 +1,23 @@
+.box {
+  border: 2px solid black;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+h1, h3 {
+  text-align: center;  
+}
+
+h1 {
+  margin: 10px 0;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+}
+
+.top, .middle, .bottom {
+  text-align: center;
+}
