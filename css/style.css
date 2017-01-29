@@ -30,11 +30,15 @@ h1 {
   margin: 10px 0;
 }
 
-button {
+h3 {
+  font-size: 14px;
+}
+
+input {
   display: block;
   margin: 20px auto;
   font-family: tahoma;
 }
-button:hover {
+input:hover {
   color: blue;
 }
