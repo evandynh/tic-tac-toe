@@ -1,16 +1,16 @@
 console.log("connected!");
 
-//creates an array of the board//
+//////creates an array of the board//////
 var board = document.getElementsByClassName('box')
 
-//starts the game with player 1 going first//
+//////starts the game with player 1 going first//////
 var player1 = true
 
-// changes userInput image based on who's turn it is //
+///////changes userInput image based on who's turn it is//////
 for (var i = 0; i < board.length; i++) {
   board[i].addEventListener('click', imgClick)
-  // board[i].addEventListener('click', handler)
-}
+  board[i].addEventListener('click', handler)
+  }
 
 function imgClick() {
   if(player1) {
@@ -25,43 +25,37 @@ function imgClick() {
   winner()
   isTie()
 }
-//game logic for who wins the match//
-function winner() {
-  if((board[0].getAttribute('data-box') === "1") && (board[1].getAttribute('data-box') === "1") && (board[2].getAttribute('data-box') === "1")) {
-    alert("Player One Wins!");
-  } else if ((board[3].getAttribute('data-box') === "1") && (board[4].getAttribute('data-box') === "1") && (board[5].getAttribute('data-box') === "1")) {
-    alert("Player One Wins!");
-  } else if((board[6].getAttribute('data-box') === "1") && (board[7].getAttribute('data-box') === "1") && (board[8].getAttribute('data-box') === "1")) {
-    alert("Player One Wins");
-  } else if ((board[0].getAttribute('data-box') === "1") && (board[3].getAttribute('data-box') === "1") && (board[6].getAttribute('data-box') === "1")) {
-    alert("Player One Wins!");
-  } else if ((board[1].getAttribute('data-box') === "1") && (board[4].getAttribute('data-box') === "1") && (board[7].getAttribute('data-box') === "1")) {
-    alert("Player One Wins!");
-  } else if ((board[2].getAttribute('data-box') === "1") && (board[5].getAttribute('data-box') === "1") && (board[8].getAttribute('data-box') === "1")) {
-    alert("Player One Wins!");
-  } else if ((board[0].getAttribute('data-box') === "1") && (board[4].getAttribute('data-box') === "1") && (board[8].getAttribute('data-box') === "1")) {
-    alert("Player One Wins!");
-  } else if ((board[2].getAttribute('data-box') === "1") && (board[4].getAttribute('data-box') === "1") && (board[6].getAttribute('data-box') === "1")) {
-    alert("Player One Wins!");
-  } else if((board[0].getAttribute('data-box') === "2") && (board[1].getAttribute('data-box') === "2") && (board[2].getAttribute('data-box') === "2")) {
-    alert("Player Two Wins!");
-  } else if ((board[3].getAttribute('data-box') === "2") && (board[4].getAttribute('data-box') === "2") && (board[5].getAttribute('data-box') === "2")) {
-    alert("Player Two Wins!");
-  } else if((board[6].getAttribute('data-box') === "2") && (board[7].getAttribute('data-box') === "2") && (board[8].getAttribute('data-box') === "2")) {
-    alert("Player Owo Wins");
-  } else if ((board[0].getAttribute('data-box') === "2") && (board[3].getAttribute('data-box') === "2") && (board[6].getAttribute('data-box') === "2")) {
-    alert("Player Two Wins!");
-  } else if ((board[1].getAttribute('data-box') === "2") && (board[4].getAttribute('data-box') === "2") && (board[7].getAttribute('data-box') === "2")) {
-    alert("Player Two Wins!");
-  } else if ((board[2].getAttribute('data-box') === "2") && (board[5].getAttribute('data-box') === "2") && (board[8].getAttribute('data-box') === "2")) {
-    alert("Player Two Wins!");
-  } else if ((board[0].getAttribute('data-box') === "2") && (board[4].getAttribute('data-box') === "2") && (board[8].getAttribute('data-box') === "2")) {
-    alert("Player Two Wins!");
-  } else if ((board[2].getAttribute('data-box') === "2") && (board[4].getAttribute('data-box') === "2") && (board[6].getAttribute('data-box') === "2")) {
-    alert("Player Two Wins!");
+
+//////Game logic for who wins the match//////
+function winner(i) {
+  rowWin("1") || rowWin("2")
+  columnWin("1") || columnWin("2")
+  diagnalWin("1") || diagnalWin("2")
+}
+function rowWin(attribute) {
+  if (
+    ((board[0].getAttribute('data-box') == attribute) && (board[1].getAttribute('data-box') === attribute) && (board[2].getAttribute('data-box') === attribute)) ||
+    ((board[3].getAttribute('data-box') === attribute) && (board[4].getAttribute('data-box') === attribute) && (board[5].getAttribute('data-box') === attribute)) ||
+    ((board[6].getAttribute('data-box') === attribute) && (board[7].getAttribute('data-box') === attribute) && (board[8].getAttribute('data-box') === attribute))) {
+      alert('Player ' + attribute + " Wins!")
   }
 }
-//Game logic for if there is a tie
+function columnWin(attribute) {
+  if (
+    ((board[0].getAttribute('data-box') == attribute) && (board[3].getAttribute('data-box') === attribute) && (board[6].getAttribute('data-box') === attribute)) ||
+    ((board[1].getAttribute('data-box') === attribute) && (board[4].getAttribute('data-box') === attribute) && (board[7].getAttribute('data-box') === attribute)) ||
+    ((board[2].getAttribute('data-box') === attribute) && (board[5].getAttribute('data-box') === attribute) && (board[8].getAttribute('data-box') === attribute))) {
+      alert('Player ' + attribute + " Wins!")
+  }
+}
+function diagnalWin(attribute) {
+  if (
+    ((board[0].getAttribute('data-box') == attribute) && (board[4].getAttribute('data-box') === attribute) && (board[8].getAttribute('data-box') === attribute)) ||
+    ((board[2].getAttribute('data-box') === attribute) && (board[4].getAttribute('data-box') === attribute) && (board[6].getAttribute('data-box') === attribute))) {
+      alert('Player ' + attribute + " Wins!")
+  }
+}
+//////Game logic for if there is a tie//////
 function isTie(){
   var count = 0;
   for (var i = 0; i < board.length; i++) {
@@ -79,13 +73,11 @@ function isTie(){
   }
 }
 
-// //game logic for only being able to click a button once//
-function handler(e) {
-	e.target.removeEventListener(e.type, arguments.callee);
+//////Game logic for only being able to click a button once//////
+function handler(i) {
+	i.target.removeEventListener(i.type, arguments.callee);
   console.log('done');
 }
-
-
 
 
 

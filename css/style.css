@@ -42,3 +42,7 @@ input {
 input:hover {
   color: blue;
 }
+
+span {
+  font-size: 20px;
+}
