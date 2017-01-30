@@ -9,7 +9,6 @@ var player1 = true
 ///////changes userInput image based on who's turn it is//////
 for (var i = 0; i < board.length; i++) {
   board[i].addEventListener('click', imgClick)
-  board[i].addEventListener('click', handler)
   }
 
 function imgClick() {
@@ -17,10 +16,14 @@ function imgClick() {
     this.style.backgroundImage = "url('http://preparingyourfamily.com/wp-content/uploads/2012/06/Get-Off-The-X.png')"
     this.setAttribute('data-box', 1)
     player1 = false
+    this.removeEventListener('click', imgClick)
+    // confirm("Player 2, it's your turn.")
   } else {
     this.style.backgroundImage = "url('http://www.iconsplace.com/download/red-letter-o-512.png')"
     this.setAttribute('data-box', 2)
     player1 = true
+    this.removeEventListener('click', imgClick)
+    // confirm("Player 1, it's your turn.")
   }
   winner()
   isTie()
@@ -63,26 +66,12 @@ function isTie(){
       count++
     }
     if (count === 9) {
-      var answer = prompt("It's a tie! Play Again?");
+      var answer = prompt("It's a tie! Play again?");
       if (answer === 'yes') {
-        alert('Click below to play again!')
+        alert('Click below to reset game')
       } else {
         alert("Thanks for playing")
       }
     }
   }
 }
-
-//////Game logic for only being able to click a button once//////
-function handler(i) {
-	i.target.removeEventListener(i.type, arguments.callee);
-  console.log('done');
-}
-
-
-
-
-
-
-
-///
